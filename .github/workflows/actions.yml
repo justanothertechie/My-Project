@@ -46,23 +46,23 @@ jobs:
       - name: Unzipping archive and installing
         run: unzip dependency-check-6.2.2-release.zip && ls -l && dependency-check/bin/dependency-check.sh -s .
 
-      - uses: actions/checkout@v2        
+   #   - uses: actions/checkout@v2        
       - name: DevSkim Scan
-      - uses: microsoft/DevSkim-Action@v1
-      - uses: github/codeql-action/upload-sarif@v1
+        uses: microsoft/DevSkim-Action@v1
+        uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: devskim-results.sarif
 
-      - uses: actions/checkout@v2
+  #    - uses: actions/checkout@v2
       - name: Trufflehog Actions Scan
-      - uses: actions/checkout@master
+        uses: actions/checkout@master
         uses: edplato/trufflehog-actions-scan@master
 
-      - uses: actions/checkout@v2
+  #    - uses: actions/checkout@v2
       - name: Spot Bugs Scan
-      - run: wget https://github.com/spotbugs/spotbugs/releases/download/4.3.0/spotbugs-4.3.0.tgz
+        run: wget https://github.com/spotbugs/spotbugs/releases/download/4.3.0/spotbugs-4.3.0.tgz
 
       - name: Unzip and install
-      - run: gunzip -c spotbugs-4.3.0.tgz | tar xvf - && $SPOTBUGS_HOME/lib/spotbugs.jar
+        run: gunzip -c spotbugs-4.3.0.tgz | tar xvf - && $SPOTBUGS_HOME/lib/spotbugs.jar
 
 
