@@ -32,7 +32,6 @@ jobs:
         image: 4985762349857/my-project
         tags: v1, latest
         registry: docker.io
-        dockerfile: Dockerfile.ci
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
