@@ -58,10 +58,18 @@ jobs:
         uses: edplato/trufflehog-actions-scan@master
 
   #    - uses: actions/checkout@v2
-      - name: Spot Bugs Scan
-        run: wget https://github.com/spotbugs/spotbugs/releases/download/4.3.0/spotbugs-4.3.0.tgz
+   #   - name: Spot Bugs Scan
+    #    run: wget https://github.com/spotbugs/spotbugs/releases/download/4.3.0/spotbugs-4.3.0.tgz
+#
+ #     - name: Unzip and install
+  #      run: gunzip -c spotbugs-4.3.0.tgz | tar xvf - && ls -l && spotbugs/bin/spotbugs && spotbugs/lib/spotbugs.jar
 
-      - name: Unzip and install
-        run: gunzip -c spotbugs-4.3.0.tgz | tar xvf - && ls -l && spotbugs/bin/spotbugs && spotbugs/lib/spotbugs.jar
+      - name: Inspec Tools Action
+        uses: mitre/inspec_tools_action@v1.0
+        with:
+          command: compliance
+          resultfile: inspec_results.json
+          thresholdfile: threshold.yaml
+
 
 
