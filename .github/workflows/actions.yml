@@ -29,6 +29,7 @@ jobs:
         image: 4985762349857/my-project
         tags: v1, latest
         registry: docker.io
+        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
@@ -44,3 +45,10 @@ jobs:
     
       - name: Unzipping archive and installing
         run: unzip dependency-check-6.2.2-release.zip && ls -l && dependency-check/bin/dependency-check.sh -s .
+
+  #  - uses: actions/checkout@v2
+      - uses: microsoft/DevSkim-Action@v1
+      - uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: devskim-results.sarif
+
