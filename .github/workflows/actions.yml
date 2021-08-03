@@ -68,7 +68,7 @@ jobs:
         uses: mitre/inspec_tools_action@v1.0
         with:
           command: compliance
-          resultfile: inspec_results.json
+          resultsfile: inspec_results.json
           thresholdfile: threshold.yaml
 
 
