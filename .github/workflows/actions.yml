@@ -33,14 +33,14 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
   securitytest:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v2
-      name: Check out code
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
       
-    - name: Downloading Dependency check tool
-      run: wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip 
+      - name: Downloading Dependency check tool
+        run: wget https://github.com/jeremylong/DependencyCheck/releases/download/v6.2.2/dependency-check-6.2.2-release.zip 
     
-    - name: Unzipping archive and installing
-      run: unzip dependency-check-6.2.2-release.zip && ls -l && dependency-check/bin/dependency-check.sh -s .
+      - name: Unzipping archive and installing
+        run: unzip dependency-check-6.2.2-release.zip && ls -l && dependency-check/bin/dependency-check.sh -s .
